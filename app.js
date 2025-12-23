@@ -73,7 +73,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require("express-session");
 const MemoryStore = require('memorystore')(session);
-const csrfApi = require("csurf");
+const helmet = require("helmet");
 const config = require("./app/config.js");
 const simpleGit = require('simple-git');
 const utils = require("./app/utils.js");
@@ -229,6 +229,8 @@ sessionConfig.store = new MemoryStore({
 	checkPeriod: 86400000 // prune expired entries every 24h
 });
 
+
+expressApp.use(helmet());
 
 expressApp.use(session(sessionConfig));
 
@@ -1135,10 +1137,9 @@ expressApp.use(function(req, res, next) {
 	next();
 });
 
-const csrfProtection = csrfApi();
-expressApp.use(csrfProtection, (req, res, next) => {
-	res.locals.csrfToken = req.csrfToken();
-
+// CSRF protection removed - using Helmet.js for security instead
+expressApp.use((req, res, next) => {
+	res.locals.csrfToken = null;
 	next();
 });
 

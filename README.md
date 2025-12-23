@@ -1,4 +1,4 @@
-# SilverBitcoin RPC Explorer - Silver2.0 Update Summary
+# SilverBitcoin RPC Explorer - Silver2.0 
 
 ## Overview
 

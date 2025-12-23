@@ -4,7 +4,6 @@ const debug = require("debug");
 const debugLog = debug("btcexp:router");
 
 const express = require('express');
-const csrfApi = require('csurf');
 const router = express.Router();
 const util = require('util');
 const moment = require('moment');
@@ -27,8 +26,6 @@ const coreApi = require("../app/api/coreApi.js");
 const addressApi = require("../app/api/addressApi.js");
 const rpcApi = require("../app/api/rpcApi.js");
 const btcQuotes = require("../app/coins/btcQuotes.js");
-
-const forceCsrf = csrfApi({ ignoreMethods: [] });
 
 let noTxIndexMsg = "\n\nYour node does not have **txindex** enabled. Without it, you can only lookup wallet, mempool, and recently confirmed transactions by their **txid**. Searching for non-wallet transactions that were confirmed more than "+config.noTxIndexSearchDepth+" blocks ago is only possible if the confirmed block height is available.";
 
