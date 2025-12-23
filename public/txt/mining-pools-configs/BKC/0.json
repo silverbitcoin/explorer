@@ -1,0 +1,62 @@
+{
+    "coinbase_tags": {
+      "/nodeStratum/": {
+        "name": "Mining Pool",
+        "link": "http://miningpool.briskcoin.org"
+      },
+      "Miningcore": {
+        "name": "Miningcore",
+        "link": "Miningcore"    
+      },
+      "/mined by poolsexy_solo/": {
+        "name": "PoolsexySolo",
+        "link": "PoolsexySolo"    
+      },
+      "/mined by splns pool.sexy/": {
+        "name": "Poolsexy",
+        "link": "Poolsexy"    
+      },
+      "koinium.com": {
+        "name": "Koinium",
+        "link": "koinium.com"    
+      },
+      "owserlab": {
+        "name": "Bowserlab",
+        "link": "bowserlab.ddns.net:8080"    
+      },
+      "GO-MININGPOOL.com": {
+        "name": "Go-Mminingpool",
+        "link": "Go-Mminingpool.com"    
+      },
+      "Mined by GO-MININGPOOL": {
+        "name": "Go-Mminingpool",
+        "link": "Go-Mminingpool.com"    
+      },
+      "PoolMine.xyz": {
+        "name": "PoolMine",
+        "link": "PoolMine.xyz"    
+      },
+        "thepool.life": {
+        "name": "Thepool.life",
+        "link": "Thepool.life"
+      },
+        "NitroPool": {
+        "name": "NitroPool",
+        "link": "https://nitropool.net"    
+      }
+    },
+      "payout_addresses": {
+        "B8sp34FQ36pZ4MoShp6qUB23AnGrG4Doya": {
+          "name": "Mining Pool",
+          "link": "http://miningpool.briskcoin.org",
+        "B8sp34FQ36pZ4MoShp6qUB23AnGrG4Doya": {
+            "name": "KriptoKyng",
+            "link": "https://kriptokyng.com"
+        }
+      }
+    },
+    "unknown_miner_payout_addresses": {
+          "somePayoutAddress": {
+          }
+      }
+  }

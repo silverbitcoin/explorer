@@ -1,0 +1,29 @@
+networks:
+  default:
+    driver: bridge
+
+services:
+  explorer:
+    container_name: slvr-rpc-explorer
+    #define $UID, $GID in .env file the user to run docker and write in data folder
+    #user: "1000:1000"
+    environment:
+      BTCEXP_COIN: SLVR
+      BTCEXP_HOST: 0.0.0.0
+      BTCEXP_RPC_HOST: ${BTCEXP_RPC_HOST:-host.docker.internal}
+      BTCEXP_RPC_PORT: ${BTCEXP_RPC_PORT:-8332}
+      BTCEXP_RPC_USERNAME: ${BTCEXP_RPC_USERNAME:-silverbitcoin}
+      BTCEXP_RPC_PASSWORD: ${BTCEXP_RPC_PASSWORD:-password}
+      BTCEXP_SLOW_DEVICE_MODE: ${BTCEXP_SLOW_DEVICE_MODE:-false}
+      NODE_ENV: production
+      #More information mode, including exchange rates
+      #More privacy mode, no external queries
+      # BTCEXP_PRIVACY_MODE: true
+      # BTCEXP_NO_RATES: true
+      # BTCEXP_UI_THEME: dark
+    build:
+      context: ./
+    image: slvr-rpc-explorer:latest
+    #restart: "no"
+    ports:
+      - "3002:3002"
