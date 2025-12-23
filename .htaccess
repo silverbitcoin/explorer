@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Next.js static files
+  RewriteRule ^_next/(.*)$ _next/$1 [L]
+  
+  # API routes - static olarak serve et
+  RewriteRule ^api/(.*)$ api/$1 [L]
+  
+  # Tüm istekleri index.html'e yönlendir (SPA için)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>

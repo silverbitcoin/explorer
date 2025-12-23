@@ -3,16 +3,13 @@ const nextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // Enable static export
-  output: 'export',
+  // Use server-side rendering (SSR) instead of static export
+  // This allows dynamic pages to work
+  // output: 'export', // Commented out - using SSR instead
   
-  // Image configuration - add GitHub raw content domain
+  // Image configuration
   images: {
-    domains: [
-      'explorer.silverbitcoin.org',
-      'raw.githubusercontent.com'  // Added this domain
-    ],
-    unoptimized: true, // Required for static export
+    unoptimized: true,
   },
 };
 

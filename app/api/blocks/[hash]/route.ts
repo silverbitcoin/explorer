@@ -1,46 +1,5 @@
-/**
- * GET /api/blocks/[hash]
- * Fetch a specific block by hash or height
- */
-
 import { NextRequest, NextResponse } from 'next/server';
 import * as rpcClient from '@/lib/rpc-client';
-
-interface BlockData {
-  hash?: string;
-  height?: number;
-  time?: number;
-  difficulty?: number;
-  merkleroot?: string;
-  previousblockhash?: string;
-  nextblockhash?: string;
-  nonce?: number;
-  bits?: string;
-  size?: number;
-  weight?: number;
-  version?: number;
-  confirmations?: number;
-  tx?: string[];
-  coinbase?: {
-    vout?: Array<{
-      scriptPubKey?: {
-        addresses?: string[];
-      };
-      value?: number;
-    }>;
-  };
-}
-
-interface Transaction {
-  txid?: string;
-  blockhash?: string;
-  blockindex?: number;
-  time?: number;
-  vout?: Array<{ value?: number }>;
-  vin?: Array<{ value?: number }>;
-  fee?: number;
-  size?: number;
-}
 
 export async function GET(
   request: NextRequest,
@@ -48,34 +7,25 @@ export async function GET(
 ) {
   try {
     const { hash } = await params;
+    if (!hash) return NextResponse.json({ error: 'Block hash required' }, { status: 400 });
 
-    if (!hash) {
-      return NextResponse.json(
-        { error: 'Block hash or height is required' },
-        { status: 400 }
-      );
-    }
-
-    // Try to fetch as hash or height
-    let blockData: BlockData;
+    let blockData: Record<string, unknown>;
     try {
-      blockData = (await rpcClient.getBlock(hash)) as BlockData;
-    } catch (error) {
-      // Try as height if hash fails
+      blockData = (await rpcClient.getBlock(hash)) as unknown as Record<string, unknown>;
+    } catch {
       const heightNum = parseInt(hash);
       if (!isNaN(heightNum)) {
-        blockData = (await rpcClient.getBlock(heightNum)) as BlockData;
+        blockData = (await rpcClient.getBlock(heightNum)) as unknown as Record<string, unknown>;
       } else {
-        throw error;
+        throw new Error('Invalid block hash or height');
       }
     }
 
-    // Fetch all transactions in the block
-    const transactions: Transaction[] = [];
+    const transactions = [];
     if (blockData.tx && Array.isArray(blockData.tx)) {
       for (const txid of blockData.tx) {
         try {
-          const tx = (await rpcClient.getTransaction(txid)) as Transaction;
+          const tx = await rpcClient.getTransaction(txid as string);
           transactions.push(tx);
         } catch (error) {
           console.error(`Error fetching transaction ${txid}:`, error);
@@ -99,16 +49,11 @@ export async function GET(
       confirmations: blockData.confirmations,
       transactions: transactions.length,
       txs: transactions,
-      miner: blockData.coinbase?.vout?.[0]?.scriptPubKey?.addresses?.[0],
-      reward: blockData.coinbase?.vout?.[0]?.value || 0,
+      miner: ((blockData.coinbase as unknown as { vout?: Array<{ scriptPubKey?: { addresses?: string[] } }> })?.vout?.[0]?.scriptPubKey?.addresses?.[0]),
+      reward: ((blockData.coinbase as unknown as { vout?: Array<{ value?: number }> })?.vout?.[0]?.value) || 0,
     });
   } catch (error) {
     console.error('Error fetching block:', error);
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : 'Failed to fetch block',
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to fetch block' }, { status: 500 });
   }
 }

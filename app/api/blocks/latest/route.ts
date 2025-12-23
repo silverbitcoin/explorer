@@ -1,12 +1,3 @@
-/**
- * GET /api/blocks/latest
- * Fetch latest blocks from blockchain
- * 
- * Query parameters:
- * - limit: number of blocks to fetch (default: 10, max: 100)
- * - offset: pagination offset (default: 0)
- */
-
 import { NextRequest, NextResponse } from 'next/server';
 import * as rpcClient from '@/lib/rpc-client';
 
@@ -16,10 +7,7 @@ export async function GET(request: NextRequest) {
     const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 100);
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    // Get current block count
     const blockCount = await rpcClient.getBlockCount();
-    
-    // Fetch blocks from highest to lowest
     const blocks = [];
     const startHeight = Math.max(0, blockCount - offset - 1);
     const endHeight = Math.max(0, startHeight - limit + 1);
@@ -29,7 +17,6 @@ export async function GET(request: NextRequest) {
         const blockHash = await rpcClient.getBlockHash(height);
         const blockData = (await rpcClient.getBlock(blockHash)) as unknown as Record<string, unknown>;
         
-        // Transform RPC response to our Block model
         blocks.push({
           hash: (blockData.hash as string) || blockHash,
           height: (blockData.height as number) || height,
@@ -39,7 +26,7 @@ export async function GET(request: NextRequest) {
           merkle: (blockData.merkleroot as string) || '',
           prev_hash: (blockData.previousblockhash as string) || '',
           next_hash: blockData.nextblockhash as string | undefined,
-          miner_address: ((blockData.coinbase as unknown as { vout?: Array<{ scriptPubKey?: { addresses?: string[] } }> })?.vout?.[0]?.scriptPubKey?.addresses?.[0]) || undefined,
+          miner_address: ((((blockData.coinbase as unknown as { vout?: Array<{ scriptPubKey?: { addresses?: string[] } }> })?.vout?.[0]?.scriptPubKey?.addresses?.[0]) || undefined)),
           block_reward: ((blockData.coinbase as unknown as { vout?: Array<{ value?: number }> })?.vout?.[0]?.value) || 0,
           size: (blockData.size as number) || 0,
           nonce: (blockData.nonce as number) || 0,
