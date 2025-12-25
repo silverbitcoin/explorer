@@ -1,0 +1,132 @@
+/**
+ * Transaction Details - Light Theme
+ */
+
+:root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-light: #e5e7eb;
+    --accent-blue: #3b82f6;
+}
+
+.tx-details-container {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+.tx-header-minimal {
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.tx-title h2 {
+    color: var(--text-primary);
+}
+
+.tx-hash-display {
+    color: var(--text-secondary);
+}
+
+.tx-action-section,
+.tx-info-section {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-light);
+}
+
+.tx-action-header,
+.tx-info-label {
+    color: var(--text-muted);
+}
+
+.tx-action-content,
+.tx-info-value {
+    color: var(--text-primary);
+}
+
+.tx-type-badge {
+    background-color: var(--tertiary-bg);
+    color: var(--text-primary);
+}
+
+.tx-summary-box {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-light);
+}
+
+.tx-summary-title {
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.tx-summary-label {
+    color: var(--text-secondary);
+}
+
+.tx-summary-value {
+    color: var(--text-primary);
+}
+
+.tx-tab-btn {
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+}
+
+.tx-tab-btn.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+
+.tx-details-table {
+    border: 1px solid var(--border-light);
+    background-color: var(--primary-bg);
+}
+
+.tx-detail-row {
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.tx-detail-row:nth-child(even) {
+    background-color: var(--secondary-bg);
+}
+
+.tx-detail-label {
+    color: var(--text-secondary);
+}
+
+.tx-detail-value {
+    color: var(--text-primary);
+}
+
+.tx-detail-value code {
+    background-color: var(--tertiary-bg);
+    color: var(--text-primary);
+}
+
+.tx-status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.tx-status-badge.success {
+    background-color: #d1fae5;
+    color: #10b981;
+}
+
+.tx-status-badge.failed {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+.tx-status-badge.pending {
+    background-color: #fef3c7;
+    color: #f59e0b;
+}

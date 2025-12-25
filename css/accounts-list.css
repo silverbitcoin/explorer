@@ -1,0 +1,515 @@
+/**
+ * SilverBitcoin Explorer - Accounts List Styles
+ * Production-Grade CSS
+ * Accounts page specific styling
+ */
+
+/* ============================================================================
+   ACCOUNTS CONTAINER
+   ============================================================================ */
+
+.accounts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.accounts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.accounts-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.accounts-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.accounts-search {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.accounts-search-input {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 13px;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    min-width: 200px;
+    transition: all 0.2s ease;
+}
+
+.accounts-search-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.accounts-search-btn {
+    padding: 0.6rem 1.2rem;
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accounts-search-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+.accounts-sort {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.sort-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.sort-select {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 13px;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ============================================================================
+   ACCOUNTS TABLE
+   ============================================================================ */
+
+.accounts-table-wrapper {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.accounts-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.accounts-table-header {
+    background-color: var(--secondary-bg);
+    border-bottom: 2px solid var(--border-medium);
+}
+
+.accounts-table-header th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.accounts-table-header th:hover {
+    background-color: var(--tertiary-bg);
+}
+
+.accounts-table-header th.sortable::after {
+    content: ' ⇅';
+    opacity: 0.5;
+}
+
+.accounts-table-header th.sorted-asc::after {
+    content: ' ↑';
+    opacity: 1;
+}
+
+.accounts-table-header th.sorted-desc::after {
+    content: ' ↓';
+    opacity: 1;
+}
+
+.accounts-table-body tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.2s ease;
+}
+
+.accounts-table-body tr:hover {
+    background-color: var(--secondary-bg);
+}
+
+.accounts-table-body tr:last-child {
+    border-bottom: none;
+}
+
+.accounts-table-body td {
+    padding: 1rem;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+/* ============================================================================
+   ACCOUNT CELLS
+   ============================================================================ */
+
+.account-rank {
+    font-weight: 700;
+    color: var(--accent-blue);
+    font-size: 14px;
+}
+
+.account-address {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    word-break: break-all;
+    transition: color 0.2s ease;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-address:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.account-balance {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.account-balance-slvr {
+    font-size: 13px;
+    color: var(--accent-green);
+}
+
+.account-balance-mist {
+    font-size: 11px;
+    color: var(--text-secondary);
+    display: block;
+}
+
+.account-percentage {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.account-transactions {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.account-first-seen {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.account-last-seen {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.account-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.account-type.user {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+}
+
+.account-type.contract {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--accent-yellow);
+}
+
+.account-type.validator {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--accent-green);
+}
+
+/* ============================================================================
+   PAGINATION
+   ============================================================================ */
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.pagination-btn {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-light);
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--secondary-bg);
+    border-color: var(--accent-blue);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
+.pagination-info {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0 1rem;
+}
+
+/* ============================================================================
+   EMPTY STATE
+   ============================================================================ */
+
+.accounts-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    color: var(--text-secondary);
+}
+
+.accounts-empty-icon {
+    font-size: 48px;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.accounts-empty-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.accounts-empty-message {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ============================================================================
+   LOADING STATE
+   ============================================================================ */
+
+.accounts-loading {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.account-skeleton {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 1rem;
+    height: 60px;
+    background: linear-gradient(
+        90deg,
+        var(--secondary-bg) 25%,
+        var(--tertiary-bg) 50%,
+        var(--secondary-bg) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .accounts-table-header th {
+        padding: 0.75rem;
+        font-size: 11px;
+    }
+
+    .accounts-table-body td {
+        padding: 0.75rem;
+        font-size: 12px;
+    }
+
+    .account-address {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .accounts-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .accounts-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .accounts-search {
+        width: 100%;
+    }
+
+    .accounts-search-input {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .accounts-search-btn {
+        width: 100%;
+    }
+
+    .accounts-sort {
+        width: 100%;
+    }
+
+    .sort-select {
+        width: 100%;
+    }
+
+    .accounts-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .accounts-table {
+        min-width: 600px;
+    }
+
+    .accounts-table-header th {
+        padding: 0.75rem 0.5rem;
+        font-size: 10px;
+    }
+
+    .accounts-table-body td {
+        padding: 0.75rem 0.5rem;
+        font-size: 11px;
+    }
+
+    .account-address {
+        max-width: 80px;
+    }
+
+    .account-type {
+        padding: 0.3rem 0.6rem;
+        font-size: 10px;
+    }
+
+    .pagination-container {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .pagination-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 12px;
+    }
+
+    .pagination-info {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .accounts-title {
+        font-size: 20px;
+    }
+
+    .accounts-table-header th {
+        padding: 0.5rem;
+        font-size: 9px;
+    }
+
+    .accounts-table-body td {
+        padding: 0.5rem;
+        font-size: 10px;
+    }
+
+    .account-address {
+        max-width: 60px;
+    }
+
+    .account-type {
+        padding: 0.25rem 0.5rem;
+        font-size: 9px;
+    }
+
+    .pagination-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 11px;
+    }
+}

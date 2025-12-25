@@ -1,0 +1,79 @@
+/**
+ * Address Details - Light Theme
+ */
+
+:root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-light: #e5e7eb;
+    --accent-blue: #3b82f6;
+}
+
+.address-details-container {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+.address-header {
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.address-title h2 {
+    color: var(--text-primary);
+}
+
+.address-info-section {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-light);
+}
+
+.address-info-label {
+    color: var(--text-secondary);
+}
+
+.address-info-value {
+    color: var(--text-primary);
+}
+
+.address-balance-box {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-light);
+}
+
+.address-tab-btn {
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+}
+
+.address-tab-btn.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+
+.address-details-table {
+    border: 1px solid var(--border-light);
+    background-color: var(--primary-bg);
+}
+
+.address-detail-row {
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.address-detail-row:nth-child(even) {
+    background-color: var(--secondary-bg);
+}
+
+.address-detail-label {
+    color: var(--text-secondary);
+}
+
+.address-detail-value {
+    color: var(--text-primary);
+}
